@@ -32,6 +32,13 @@ namespace CODE4TECH.Controllers
             return context.Readings.Where(r => r.DeviceId == id).OrderBy(r => r.Time);
         }
 
+        // GET: api/ids
+        [HttpGet("ids")]
+        public IEnumerable<int> Ids()
+        {
+            return context.Readings.Select(r => r.DeviceId).Distinct();
+        }
+
         // POST api
         [HttpPost]
         public void Post([FromBody]Reading reading)
