@@ -19,20 +19,26 @@
 
             for (var i = 1; i < readings.length; i++) {
 
-                var maxspeed = 35;
+                var maxSpeed = 35;
 
-                var red = 255 - (readings[i].speed / maxspeed * 255);
-                var green = (readings[i].speed / maxspeed) * 255;
-                var blue = 0;
-                
-                red = Math.round(Math.max(Math.min(255, red), 0));
-                green = Math.round(Math.max(Math.min(255, green), 0));
-               
+                var colorSet = [
+                    '#FF0000',
+                    '#FFFF00',
+                    '#00FF00',
+                    '#2222ee'
+                ];
+                var speed = (readings[i - 1].speed + readings[i].speed) / 2;
+                var index = colorSet.length - 1;
+                if (speed < maxSpeed) {
+                    index = Math.floor((speed / maxSpeed) * (colorSet.length - 1));
+                }
+
+                var hex = '#FFFFFF';
 
                 L.polyline([
                     [readings[i - 1].latitude, readings[i - 1].longitude],
                     [readings[i].latitude, readings[i].longitude]
-                ], { color: `rgb(${red}, ${green}, ${blue})`}).addTo(map);
+                ], { color: colorSet[index]}).addTo(map);
             }
 
         });
