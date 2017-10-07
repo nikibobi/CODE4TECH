@@ -6,39 +6,31 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CODE4TECH.Controllers
 {
-    [Route("api/[controller]")]
+    using Database;
+
+    [Route("api")]
     public class DataController : Controller
     {
-        // GET: api/values
+        private readonly Code4TechDbContext context;
+
+        public DataController(Code4TechDbContext context)
+        {
+            this.context = context;
+        }
+
+        // GET: api
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Reading> Get()
         {
-            return new string[] { "value1", "value2" };
+            return context.Readings;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
+        // POST api
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Reading reading)
         {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            context.Readings.Add(reading);
+            context.SaveChanges();
         }
     }
 }
