@@ -25,11 +25,11 @@
             if (confirm(`Confirm Entry:\n Latitude:${lat}\nLongitude:${lng}\nSpeed:${speed}\nID:${id}`)) {
                 $.ajax({
                     url: '/api',
-                    type: "POST",
-                    data: { DeviceId: id, Latitude: lat, Longitude: lng, Speed: speed },
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json"
-                })
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ DeviceId: id, Latitude: lat, Longitude: lng, Speed: speed }),
+                    dataType: 'json'
+                });
             }
         }
 
