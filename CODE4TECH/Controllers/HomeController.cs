@@ -15,6 +15,13 @@ namespace CODE4TECH.Controllers
             return View();
         }
 
+        [Route("{id}")]
+        public IActionResult Get(int id)
+        {
+            ViewData["Id"] = id;
+            return View("Index");
+        }
+
         public IActionResult Simulate()
         {
             return View();

@@ -10,13 +10,15 @@ namespace ImportNMEA
 {
     class Program
     {
-        const string Path = @"C:\Users\bosak\Desktop\GPS.txt";
+        const string Path = @"C:\Users\bosak\Desktop\GPS4.txt";
         const string ConnectionString = "Data Source=BOSAKPC;Database=Code4Tech;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
         const double KnotsToKmh = 1.852;
 
         static void Main(string[] args)
         {
             var opt = new DbContextOptionsBuilder<Code4TechDbContext>().UseSqlServer(ConnectionString).Options;
+
+            var id = int.Parse(Console.ReadLine());
 
             using (var reader = new StreamReader(Path))
             using (var ctx = new Code4TechDbContext(opt))
@@ -31,7 +33,7 @@ namespace ImportNMEA
                         {
                             var reading = new Reading()
                             {
-                                DeviceId = 2323,
+                                DeviceId = id,
                                 Latitude = msg.Latitude,
                                 Longitude = msg.Longitude,
                                 Speed = msg.Speed * KnotsToKmh,
