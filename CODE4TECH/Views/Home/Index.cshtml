@@ -10,7 +10,7 @@
 
         L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-            maxZoom: 18,
+            maxZoom: 20,
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1Ijoic2FzNDEiLCJhIjoiY2o4aDg1eW1lMG4wNzMyc3lwZzh5b2kxYSJ9.199CohZXgm_9AiWkNRS5kA'
         }).addTo(map);
@@ -33,13 +33,11 @@
                     index = Math.floor((speed / maxSpeed) * (colorSet.length - 1));
                 }
 
-                var hex = '#FFFFFF';
-
                 L.polyline([
                     [readings[i - 1].latitude, readings[i - 1].longitude],
                     [readings[i].latitude, readings[i].longitude]
-                ], { color: colorSet[index], weight: 12,opacity: 0.5 })
-                    .bindPopup(`Approximate Speed: ${speed} Km/h <br> Updated at: ${new Date(readings[i].time).toLocaleTimeString('en-US', { hour12: false })}`)
+                ], { color: colorSet[index], weight: 12, opacity: 0.5 })
+                    .bindPopup(`Approximate Speed: ${speed.toFixed(2)} Km/h <br> Updated at: ${new Date(readings[i].time).toLocaleTimeString('en-US', { hour12: false })}`)
                     .addTo(map);
             }
 
