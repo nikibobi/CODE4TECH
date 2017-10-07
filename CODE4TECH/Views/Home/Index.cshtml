@@ -38,7 +38,9 @@
                 L.polyline([
                     [readings[i - 1].latitude, readings[i - 1].longitude],
                     [readings[i].latitude, readings[i].longitude]
-                ], { color: colorSet[index]}).addTo(map);
+                ], { color: colorSet[index], weight: 12,opacity: 0.5 })
+                    .bindPopup(`Approximate Speed: ${speed} Km/h <br> Updated at: ${new Date(readings[i].time).toLocaleTimeString('en-US', { hour12: false })}`)
+                    .addTo(map);
             }
 
         });
