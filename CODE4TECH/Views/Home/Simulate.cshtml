@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "SIMULATED DATA ENTRY!";
+}
+
+<div id="map"></div>
+
+@section Scripts{ 
+    <script>
+
+        let map = L.map('map').setView([43.8551449, 25.9696306], 18);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1Ijoic2FzNDEiLCJhIjoiY2o4aDg1eW1lMG4wNzMyc3lwZzh5b2kxYSJ9.199CohZXgm_9AiWkNRS5kA'
+        }).addTo(map);
+
+        function onMapClick(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+            var id = prompt("ID:", "1234");
+            var speed = prompt("SPEED:", "0.0");
+
+            if (confirm(`Confirm Entry:\n Latitude:${lat}\nLongitude:${lng}\nSpeed:${speed}\nID:${id}`)) {
+                $.ajax({
+                    url: '/api',
+                    type: "POST",
+                    data: { DeviceId: id, Latitude: lat, Longitude: lng, Speed: speed },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                })
+            }
+        }
+
+        map.on('click', onMapClick);
+
+        
+    </script>
+}
