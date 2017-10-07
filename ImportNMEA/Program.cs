@@ -12,7 +12,7 @@ namespace ImportNMEA
     {
         const string Path = @"C:\Users\bosak\Desktop\GPS4.txt";
         const string ConnectionString = "Data Source=BOSAKPC;Database=Code4Tech;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
-        const double KnotsToKmh = 1.852;
+        const double KnotsToKmh = 1.8520;
 
         static void Main(string[] args)
         {
