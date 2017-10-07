@@ -11,9 +11,10 @@ using System;
 namespace CODE4TECH.Migrations
 {
     [DbContext(typeof(Code4TechDbContext))]
-    partial class Code4TechDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171007150619_AddSpeedColumn")]
+    partial class AddSpeedColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -16,8 +16,25 @@
         }).addTo(map);
 
         $.get('/api').done(function (readings) {
-            let points = readings.map(r => [r.latitude, r.longitude]);
-            L.polyline(points, { color: 'orange' }).addTo(map);
+
+            for (var i = 1; i < readings.length; i++) {
+
+                var maxspeed = 35;
+
+                var red = 255 - (readings[i].speed / maxspeed * 255);
+                var green = (readings[i].speed / maxspeed) * 255;
+                var blue = 0;
+                
+                red = Math.max(Math.min(255, red), 0);
+                green = Math.max(Math.min(255, green), 0);
+               
+
+                L.polyline([
+                    [readings[i - 1].latitude, readings[i - 1].longitude],
+                    [readings[i].latitude, readings[i].longitude]
+                ], { color: `rgb(${red}, ${green}, ${blue})`}).addTo(map);
+            }
+
         });
     </script>
 }
