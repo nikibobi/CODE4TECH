@@ -22,7 +22,14 @@ namespace CODE4TECH.Controllers
         [HttpGet]
         public IEnumerable<Reading> Get()
         {
-            return context.Readings;
+            return context.Readings.OrderBy(r => r.Time);
+        }
+
+        // GET: api/id
+        [HttpGet("{id}")]
+        public IEnumerable<Reading> Get(int id)
+        {
+            return context.Readings.Where(r => r.DeviceId == id).OrderBy(r => r.Time);
         }
 
         // POST api
