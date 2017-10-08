@@ -19,7 +19,7 @@ namespace CODE4TECH.Controllers
         public IActionResult Get(int id)
         {
             ViewData["Id"] = id;
-            return View("Index");
+            return View();
         }
 
         public IActionResult Simulate()

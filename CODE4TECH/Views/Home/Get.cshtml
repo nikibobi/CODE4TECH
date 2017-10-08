@@ -15,10 +15,7 @@
             accessToken: 'pk.eyJ1Ijoic2FzNDEiLCJhIjoiY2o4aDg1eW1lMG4wNzMyc3lwZzh5b2kxYSJ9.199CohZXgm_9AiWkNRS5kA'
         }).addTo(map);
 
-        $.get('api/ids').done(function (devices) {
-
-            for (var i of devices) {
-                $.get(`api/${i}`).done(function (readings) {
+        $.get(`api/@ViewData["Id"]`).done(function (readings) {
 
                     for (var i = 1; i < readings.length; i++) {
 
@@ -45,8 +42,6 @@
                     }
 
                 });
-            }
-        });
 
     </script>
 }
