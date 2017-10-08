@@ -10,7 +10,7 @@ namespace ImportNMEA
 {
     class Program
     {
-        const string Path = @"C:\Users\bosak\Desktop\GPS4.txt";
+        const string Path = @"C:\Users\bosak\Desktop\3333.txt";
         const string ConnectionString = "Data Source=BOSAKPC;Database=Code4Tech;Integrated Security=True;Trusted_Connection=True;MultipleActiveResultSets=true";
         const double KnotsToKmh = 1.8520;
 
@@ -28,24 +28,30 @@ namespace ImportNMEA
                     string line = reader.ReadLine();
                     if (line.StartsWith("$"))
                     {
-                        var nmea = NmeaMessage.Parse(line);
-                        if (nmea is Gprmc msg)
+                        try
                         {
-                            var reading = new Reading()
+                            var nmea = NmeaMessage.Parse(line);
+                            if (nmea is Gprmc msg)
                             {
-                                DeviceId = id,
-                                Latitude = msg.Latitude,
-                                Longitude = msg.Longitude,
-                                Speed = msg.Speed * KnotsToKmh,
-                                Time = msg.FixTime
-                            };
+                                var reading = new Reading()
+                                {
+                                    DeviceId = id,
+                                    Latitude = msg.Latitude,
+                                    Longitude = msg.Longitude,
+                                    Speed = msg.Speed * KnotsToKmh,
+                                    Time = msg.FixTime
+                                };
 
-                            ctx.Readings.Add(reading);
+                                ctx.Readings.Add(reading);
+                                ctx.SaveChanges();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            continue;
                         }
                     }
                 }
-
-                ctx.SaveChanges();
             }
         }
     }
