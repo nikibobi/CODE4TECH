@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CODE4TECH", "CODE4TECH\CODE4TECH.csproj", "{4E85E17E-63A2-4AFD-A137-54249ADBA4CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CODE4TECH", "CODE4TECH\CODE4TECH.csproj", "{4E85E17E-63A2-4AFD-A137-54249ADBA4CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportNMEA", "ImportNMEA\ImportNMEA.csproj", "{39B858D0-FAE8-42A7-9729-0A2579C2E539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImportNMEA", "ImportNMEA\ImportNMEA.csproj", "{39B858D0-FAE8-42A7-9729-0A2579C2E539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImportCSV", "ImportCSV\ImportCSV.csproj", "{EB631AC3-00BE-471E-A622-9D0750257248}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{39B858D0-FAE8-42A7-9729-0A2579C2E539}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39B858D0-FAE8-42A7-9729-0A2579C2E539}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39B858D0-FAE8-42A7-9729-0A2579C2E539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB631AC3-00BE-471E-A622-9D0750257248}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB631AC3-00BE-471E-A622-9D0750257248}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB631AC3-00BE-471E-A622-9D0750257248}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB631AC3-00BE-471E-A622-9D0750257248}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
